@@ -4,7 +4,7 @@ function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    fetch('/api/message') // or full URL if no proxy
+    fetch('/test-db') // or full URL if no proxy
       .then(res => res.json())
       .then(data => {
         console.log("Fetched:", data);
