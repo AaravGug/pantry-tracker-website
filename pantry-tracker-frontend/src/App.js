@@ -8,12 +8,14 @@ function App() {
       .then(res => res.json())
       .then(data => {
         console.log("Fetched:", data);
-        setMessage(data.message);
+        setMessage(data.ingredient_names || 'No ingredients found');
       })
       .catch(err => console.error("Fetch error:", err));
   }, []);
 
-  return <h1>{message}</h1>;
+  return <p>{message}</p>;
 }
+
+
 
 export default App;

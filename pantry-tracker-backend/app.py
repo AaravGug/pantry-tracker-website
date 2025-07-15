@@ -22,6 +22,7 @@ def test_db():
     try:
         result = db.session.execute(text('SELECT aliased_ingredient_name FROM ingredients WHERE entity_id BETWEEN 0 AND 10'))
         names = [row[0] for row in result]
-        return jsonify({'ingredient_names': names})
+        namesString = ', '.join(names)
+        return jsonify({'ingredient_names': namesString})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
