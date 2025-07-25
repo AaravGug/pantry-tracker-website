@@ -4,12 +4,14 @@ from dotenv import load_dotenv
 import os
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text
+from lookupIngredient import lookupIngredient_bp
+from extensions import db
 
 load_dotenv("ApiKeys.env")
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
-db = SQLAlchemy(app)
+db.init_app(app)
 
 CORS(app)
 
@@ -26,3 +28,5 @@ def test_db():
         return jsonify({'ingredient_names': namesString})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+app.register_blueprint(lookupIngredient_bp)

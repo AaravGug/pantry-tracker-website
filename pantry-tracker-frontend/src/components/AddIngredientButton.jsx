@@ -6,7 +6,7 @@ const [showPopup, setShowPopup] = useState(false);
 
     return (
         <>
-            <button class="button" onClick={
+            <button className="button" onClick={
                 () => setShowPopup(true)
             }>Add Ingredient</button>
             {showPopup && <AddIngredientPopup onClose={() => setShowPopup(false)} />}
