@@ -22,7 +22,3 @@ def lookup_ingredient():
         return jsonify({'ingredients': all_ingredients})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    
-@lookupIngredient_bp.route('/test')
-def test():
-    return jsonify({'test ok': 'test ok'})

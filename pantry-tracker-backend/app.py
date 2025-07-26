@@ -5,6 +5,7 @@ import os
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text
 from lookupIngredient import lookupIngredient_bp
+from getIngredientList import getIngredientList_bp
 from extensions import db
 
 load_dotenv("ApiKeys.env")
@@ -30,3 +31,5 @@ def test_db():
         return jsonify({'error': str(e)}), 500
     
 app.register_blueprint(lookupIngredient_bp)
+
+app.register_blueprint(getIngredientList_bp)

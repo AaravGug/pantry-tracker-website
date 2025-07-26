@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-function App() {
+function Application() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
@@ -18,4 +18,4 @@ function App() {
 
 
 
-export default App;
+export default Application;
