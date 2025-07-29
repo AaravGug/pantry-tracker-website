@@ -10,12 +10,16 @@
     min-height: 25vh;
 }
 
+.pantry-search-bar {
+    width: 20%;
+}
+
 .add-ingredient-buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-between 2rem;
     align-items: center;
-    margin-top: 1rem;
+    margin-top: auto;
 }
 
 .add-ingredient-button {
