@@ -37,6 +37,21 @@ input {
   border-radius: 4px;
 }
 
+input[type="number"] {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="number"]:focus {
+  border-color: yellowgreen;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
 ul {
   width: 100%;
   list-style: none;
@@ -56,6 +71,28 @@ li {
 
 li:hover {
   background-color: #e0e0e0;
+}
+
+select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  appearance: none;
+  cursor: pointer;
+  transition: border 0.3s ease;
+}
+
+select:focus {
+  outline: none;
+  border-color: yellowgreen;
+}
+
+option {
+  font-size: 1rem;
+  padding: 0.5rem;
 }
 
 .app-navbar .page-link {
@@ -118,6 +155,24 @@ li:hover {
   padding: 2rem;
   border-radius: 8px;
   z-index: 1001;
+}
+
+.popup-content button {
+  transition: background 0.3s ease;
+}
+
+.popup-content button:hover {
+  background-color: grey;
+}
+
+.popup-content input,
+.popup-content select {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
 }
 
 .popup-header {
