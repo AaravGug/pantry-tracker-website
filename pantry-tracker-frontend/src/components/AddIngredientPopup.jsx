@@ -14,10 +14,7 @@ const AddIngredientPopup = ({ onClose }) => {
         </div>
         {/* Display search results */}
         <BuildIngredientListNames ingredientList={searchResults} />
-        <div className ='add-ingredient-buttons'>
-          <button onClick={onClose}>Confirm</button>
-          <button onClick={onClose}>Cancel</button>
-        </div>
+        <button className='popup-bottom-buttons' onClick={onClose}>Close</button>
       </div>
     </div>
   );

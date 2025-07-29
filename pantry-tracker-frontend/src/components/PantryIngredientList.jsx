@@ -8,7 +8,7 @@ const PantryIngredientList = () => {
 
     const fetchPantry = async () => {
         const ingredientJson = await fetch('/get-ingredient-list');
-        const data = await ingredientJson.json(); // data is a Json with 3 keys: 'name', 'quantity', and 'units'
+        const data = await ingredientJson.json(); // data is a Json with 3 keys: 'name', 'quantity', and 'unitID'
         const ingredients = data.ingredients;
         if (ingredients.length > 0) {
             setIngredientList(ingredients);
