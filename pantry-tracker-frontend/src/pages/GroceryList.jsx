@@ -1,7 +1,14 @@
+import '../styles/pantry-and-grocery.css';
+import GroceryListPageHeader from '../components/GroceryListPageHeader';
+import GroceryIngredientList from '../components/GroceryIngredientList'
 
 const GroceryList = () => {
     return (
-        <h1>Grocery List</h1>
+        <div className="grocery-list-page">
+            <h1> Build your grocery list!</h1>
+            <GroceryListPageHeader />
+            <GroceryIngredientList />
+        </div>
     )
 }
 

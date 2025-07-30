@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <header className="header">
-        <h1>Smart Pantry</h1>
+        <h1>Welcome to Pantry Tracker!</h1>
       </header>
       <main className="content">
         <img src={pantryImage} alt="Pantry Illustration" className="hero-image" />

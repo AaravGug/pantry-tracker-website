@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ModifyIngredientPopup from './ModifyIngredientPopup';
 
-const BuildIngredientListInfo = ({ ingredientList }) => {
+const BuildIngredientListInfo = ({ ingredientList, source }) => {
     const [selectedIngredient, setSelectedIngredient] = useState('');
     const [showPopup, setShowPopup] = useState(false);
 
@@ -16,7 +16,7 @@ const BuildIngredientListInfo = ({ ingredientList }) => {
                     }>{ingredient.name} - {ingredient.quantity} {ingredient.unitID}</li> 
                 ))}
             </ul>
-            {showPopup && <ModifyIngredientPopup ingredientName={selectedIngredient.name} givenUnits={selectedIngredient.unitID} purpose={'Modify'} onClose={() => setShowPopup(false)} />}
+            {showPopup && <ModifyIngredientPopup ingredientName={selectedIngredient.name} givenUnits={selectedIngredient.unitID} purpose={'Modify'} source={source} onClose={() => setShowPopup(false)} />}
         </>
     );
 }

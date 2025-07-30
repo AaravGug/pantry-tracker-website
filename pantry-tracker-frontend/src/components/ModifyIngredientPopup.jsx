@@ -1,16 +1,24 @@
-/* Todo: create this component that allows for modifying ingredient entries in pantry/db, this is used when clicking on an ingredient <li> item 
-this component should allow users to specify quantities and units for entries to pantry table
-should be reusable for adding new ingredient and for modifying quantity of existing ingredient
+/* Todo: Update pantry list when ingredient entry is modified, maybe make function that is passed ingredientList setter and updates it so that UI updates
  */
 import { useState } from 'react';
 import ModifyIngredientEntry from '../utils/ModifyIngredientEntry';
+import ModifyGroceryListEntry from '../utils/ModifyGroceryListEntry';
 
-const ModifyIngredientPopup = ({ ingredientName, givenUnits, purpose, onClose }) => {
+const ModifyIngredientPopup = ({ ingredientName, givenUnits, purpose, source, onClose }) => {
     const [quantity, setQuantity] = useState(0);
     const [units, setUnits] = useState(givenUnits || 'whole');
 
     const handleConfirm = () => {
-        ModifyIngredientEntry({ ingredientName, quantity, units });
+        if (source === "pantry") {
+            ModifyIngredientEntry({ ingredientName, quantity, units });
+            
+        }
+        else if (source === "grocery list") {
+            ModifyGroceryListEntry({ ingredientName, quantity, units });
+        }
+        else {
+            console.log('source cannot be determined, issue with string equality check');
+        }
         onClose();
     }
 

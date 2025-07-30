@@ -7,6 +7,8 @@ from sqlalchemy import text
 from database_operations.lookupIngredient import lookupIngredient_bp
 from database_operations.getIngredientList import getIngredientList_bp
 from database_operations.modifyIngredientEntry import modifyIngredientEntry_bp
+from database_operations.getGroceryList import getGroceryList_bp
+from database_operations.modifyGroceryListEntry import modifyGroceryListEntry_bp
 from extensions import db
 
 load_dotenv("ApiKeys.env")
@@ -36,3 +38,7 @@ app.register_blueprint(lookupIngredient_bp)
 app.register_blueprint(getIngredientList_bp)
 
 app.register_blueprint(modifyIngredientEntry_bp)
+
+app.register_blueprint(getGroceryList_bp)
+
+app.register_blueprint(modifyGroceryListEntry_bp)

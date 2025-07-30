@@ -1,6 +1,7 @@
 
 
-.pantry-page {
+.pantry-page,
+.grocery-list-page {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -10,7 +11,8 @@
     min-height: 25vh;
 }
 
-.pantry-search-bar {
+.pantry-search-bar,
+.grocery-list-search-bar {
     width: 20%;
 }
 
@@ -22,8 +24,10 @@
     margin-top: auto;
 }
 
-.add-ingredient-button {
+.add-ingredient-button,
+.add-to-pantry-button {
     padding: 0.6rem 1.2rem;
+    margin: 0.25rem;
     background-color: yellowgreen;
     color: white;
     border: none;
@@ -34,11 +38,13 @@
     transition: background-color 0.2s;
 }
 
-.add-ingredient-button:hover {
+.add-ingredient-button:hover,
+.add-to-pantry-button:hover {
     background-color: rgb(109, 145, 36);
 }
 
-.add-ingredient-button-container {
+.pantry-page-header,
+.grocery-list-page-header {
     width: 95%;
     display: flex;
     flex-direction: row;

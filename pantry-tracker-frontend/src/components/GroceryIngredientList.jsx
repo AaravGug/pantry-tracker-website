@@ -2,24 +2,24 @@ import { useState, useEffect } from 'react';
 import BuildIngredientListInfo from './BuildIngredientListInfo';
 import PantrySearchBar from './PantrySearchBar';
 
-const PantryIngredientList = () => {
+const GroceryIngredientList = () => {
     let [ingredientList, setIngredientList] = useState([]);
     const [filteredResults, setFilteredResults] = useState([]);
 
-    const fetchPantry = async () => {
-        const ingredientJson = await fetch('/get-ingredient-list');
+    const fetchGroceryList = async () => {
+        const ingredientJson = await fetch('/get-grocery-list');
         const data = await ingredientJson.json(); // data is a Json with 3 keys: 'name', 'quantity', and 'unitID'
         const ingredients = data.ingredients;
         if (ingredients.length > 0) {
             setIngredientList(ingredients);
         }
         else {
-            setIngredientList("Looks like you don't have any ingredients in your pantry yet, you can add some using the button above!");
+            setIngredientList("Start building your grocery list with the button above!");
         }
     }
 
     useEffect(() => {
-        fetchPantry();
+        fetchGroceryList();
     }, []);
 
     if (typeof ingredientList === 'string') {
@@ -31,11 +31,11 @@ const PantryIngredientList = () => {
         return (
             <>
                 <PantrySearchBar ingredientsList={ingredientList} setSearchResults={setFilteredResults} />
-                <BuildIngredientListInfo ingredientList={filteredResults} source={"pantry"} />
+                <BuildIngredientListInfo ingredientList={filteredResults} source={"grocery list"} />
             </>
     );
     }
     
 }
 
-export default PantryIngredientList;
+export default GroceryIngredientList;
