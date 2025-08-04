@@ -1,4 +1,5 @@
 import AddIngredientButton from './AddIngredientButton';
+import AddListToPantryButton from './AddListToPantryButton';
 
 const GroceryListPageHeader = () => {
     return (
@@ -6,7 +7,7 @@ const GroceryListPageHeader = () => {
         <h2>Your Grocery List:</h2>
         <div>
             <AddIngredientButton source={"grocery list"}/>
-            <button className="add-to-pantry-button">Add List to Pantry</button>
+            <AddListToPantryButton />
         </div>
     </div>
     )

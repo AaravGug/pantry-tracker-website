@@ -9,6 +9,8 @@ from database_operations.getIngredientList import getIngredientList_bp
 from database_operations.modifyIngredientEntry import modifyIngredientEntry_bp
 from database_operations.getGroceryList import getGroceryList_bp
 from database_operations.modifyGroceryListEntry import modifyGroceryListEntry_bp
+from database_operations.addListToPantry import addListToPantry_bp
+from database_operations.emptyGroceryList import emptyGroceryList_bp
 from extensions import db
 
 load_dotenv("ApiKeys.env")
@@ -42,3 +44,7 @@ app.register_blueprint(modifyIngredientEntry_bp)
 app.register_blueprint(getGroceryList_bp)
 
 app.register_blueprint(modifyGroceryListEntry_bp)
+
+app.register_blueprint(addListToPantry_bp)
+
+app.register_blueprint(emptyGroceryList_bp)
