@@ -4,7 +4,8 @@ const AddListToPantryPopupConfirm = async() => {
     const wasSuccessful = data.success
 
     if (wasSuccessful){ 
-        await fetch('/empty-grocery-list', { method: 'POST' })
+        const secondResponse = await fetch('/empty-grocery-list', { method: 'POST' })
+        return await secondResponse.json();
     }
     else {
         console.log("could not add to pantry")

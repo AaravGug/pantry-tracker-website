@@ -1,9 +1,16 @@
 import AddListToPantryPopupConfirm from '../utils/AddListToPantryPopupConfirm';
+import { useGroceryList } from './GroceryListProvider';
 
 const AddListToPantryPopup = ({ onClose }) => {
-    const confirmButtonHandler = () => {
+    const { refreshGroceryList } = useGroceryList();
+
+    const confirmButtonHandler = async () => {
         onClose();
-        AddListToPantryPopupConfirm();
+        const result = await AddListToPantryPopupConfirm();
+        if (result.success) {
+        await new Promise(resolve => setTimeout(resolve, 100));
+        refreshGroceryList();
+        }
     }
 
     return (

@@ -1,20 +1,23 @@
-/* Todo: Update pantry list when ingredient entry is modified, maybe make function that is passed ingredientList setter and updates it so that UI updates
- */
 import { useState } from 'react';
 import ModifyIngredientEntry from '../utils/ModifyIngredientEntry';
 import ModifyGroceryListEntry from '../utils/ModifyGroceryListEntry';
+import { useGroceryList } from './GroceryListProvider';
 
 const ModifyIngredientPopup = ({ ingredientName, givenUnits, purpose, source, onClose }) => {
+    const { refreshGroceryList } = useGroceryList();
     const [quantity, setQuantity] = useState(0);
     const [units, setUnits] = useState(givenUnits || 'whole');
 
-    const handleConfirm = () => {
+    const handleConfirm = async () => {
         if (source === "pantry") {
             ModifyIngredientEntry({ ingredientName, quantity, units });
             
         }
         else if (source === "grocery list") {
             ModifyGroceryListEntry({ ingredientName, quantity, units });
+            await new Promise(resolve => setTimeout(resolve, 100));
+            refreshGroceryList();
+            console.log('refreshing grocery list');
         }
         else {
             console.log('source cannot be determined, issue with string equality check');

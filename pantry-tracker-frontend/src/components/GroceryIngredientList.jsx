@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import BuildIngredientListInfo from './BuildIngredientListInfo';
 import PantrySearchBar from './PantrySearchBar';
+import { useGroceryList } from './GroceryListProvider';
 
 const GroceryIngredientList = () => {
+    const { refreshFlag } = useGroceryList();
     let [ingredientList, setIngredientList] = useState([]);
     const [filteredResults, setFilteredResults] = useState([]);
 
@@ -20,7 +22,7 @@ const GroceryIngredientList = () => {
 
     useEffect(() => {
         fetchGroceryList();
-    }, []);
+    }, [refreshFlag]);
 
     if (typeof ingredientList === 'string') {
         return (

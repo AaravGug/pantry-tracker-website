@@ -10,6 +10,6 @@ def emptyGroceryList():
     try:
         db.session.execute(text('UPDATE my_grocery_list SET quantity = 0 WHERE quantity > 0'))
         db.session.commit()
-        return jsonify({'message': 'Grocery List Emptied Successfully'}), 200
+        return jsonify({'success': True, 'message': 'Grocery List Emptied Successfully'}), 200
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'success': False, 'error': str(e)}), 500
