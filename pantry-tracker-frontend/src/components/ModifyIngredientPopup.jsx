@@ -1,22 +1,26 @@
 import { useState } from 'react';
 import ModifyIngredientEntry from '../utils/ModifyIngredientEntry';
 import ModifyGroceryListEntry from '../utils/ModifyGroceryListEntry';
+import { usePantryList } from './PantryListProvider';
 import { useGroceryList } from './GroceryListProvider';
 
 const ModifyIngredientPopup = ({ ingredientName, givenUnits, purpose, source, onClose }) => {
-    const { refreshGroceryList } = useGroceryList();
+    const pantryContext = usePantryList();
+    const groceryContext = useGroceryList();
     const [quantity, setQuantity] = useState(0);
     const [units, setUnits] = useState(givenUnits || 'whole');
 
     const handleConfirm = async () => {
         if (source === "pantry") {
             ModifyIngredientEntry({ ingredientName, quantity, units });
-            
+            await new Promise(resolve => setTimeout(resolve, 100));
+            pantryContext.refreshPantryList();
+            console.log('refreshing pantry list')
         }
         else if (source === "grocery list") {
             ModifyGroceryListEntry({ ingredientName, quantity, units });
             await new Promise(resolve => setTimeout(resolve, 100));
-            refreshGroceryList();
+            groceryContext.refreshGroceryList();
             console.log('refreshing grocery list');
         }
         else {
