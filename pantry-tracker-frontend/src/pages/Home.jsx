@@ -1,5 +1,4 @@
 import '../styles/home.css';
-import pantryImage from '../assets/International-Cat-Day-Challenge.png';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 const Home = () => {
@@ -9,9 +8,9 @@ const Home = () => {
         <h1>Welcome to Pantry Tracker!</h1>
       </header>
       <main className="content">
-        <img src={pantryImage} alt="Pantry Illustration" className="hero-image" />
+        {/* Can add an image here in the future, will slot in with no issue */}
         <p className="tagline">
-          Simplify your kitchen. Track, manage, and never run out of your essentials.
+          Track and manage your ingredients, with delicious recipe suggestions!
         </p>
         <Link to="/pantry" className="get-started-button">Get Started</Link>
       </main>

@@ -1,7 +1,6 @@
-
 const Recipes = () => {
     return (
-        <h1>Suggested recipes here!</h1>
+        <h1>Suggested recipes coming soon!</h1>
     )   
 }
 

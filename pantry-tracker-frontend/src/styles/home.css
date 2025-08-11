@@ -39,6 +39,7 @@ body {
 }
 
 .content {
+  background-color: #83b02a1a;
   flex: 1;
   padding: 3rem;
   display: flex;
