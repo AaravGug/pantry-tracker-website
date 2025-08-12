@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import API_BASE from '../utils/Api';
 
 const AddIngredientSearchBar = ({ setSearchResults }) => {
     const [query, setQuery] = useState('');
@@ -7,7 +8,7 @@ const AddIngredientSearchBar = ({ setSearchResults }) => {
         const newQuery = event.target.value;
         setQuery(newQuery);
 
-        const searchedIngredients = await fetch(`/lookup-ingredient?query=${encodeURIComponent(newQuery)}`)
+        const searchedIngredients = await fetch(`${API_BASE}/lookup-ingredient?query=${encodeURIComponent(newQuery)}`)
         const data = await searchedIngredients.json();
         setSearchResults(data.ingredients);
     };

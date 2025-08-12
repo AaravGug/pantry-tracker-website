@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import BuildIngredientListInfo from './BuildIngredientListInfo';
 import PantrySearchBar from './PantrySearchBar';
 import { useGroceryList } from './GroceryListProvider';
+import API_BASE from '../utils/Api';
 
 const GroceryIngredientList = () => {
     const { refreshFlag } = useGroceryList();
@@ -9,7 +10,7 @@ const GroceryIngredientList = () => {
     const [filteredResults, setFilteredResults] = useState([]);
 
     const fetchGroceryList = async () => {
-        const ingredientJson = await fetch('/get-grocery-list');
+        const ingredientJson = await fetch(`${API_BASE}/get-grocery-list`);
         const data = await ingredientJson.json(); // data is a Json with 3 keys: 'name', 'quantity', and 'unitID'
         const ingredients = data.ingredients;
         if (ingredients.length > 0) {
