@@ -20,7 +20,7 @@ const PantrySearchBar = ({ ingredientsList, setSearchResults }) => {
 
     useEffect(() => {
         setSearchResults(ingredientsList);
-    }, [ingredientsList]);
+    }, [ingredientsList, setSearchResults]);
 
     return (
         <input className='pantry-search-bar'
