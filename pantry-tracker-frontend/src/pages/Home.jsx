@@ -15,7 +15,7 @@ const Home = () => {
         <Link to="/pantry" className="get-started-button">Get Started</Link>
       </main>
       <footer className="footer">
-        &copy; {new Date().getFullYear()} Smart Pantry. All rights reserved.
+        Made by Aarav Guglani <a href="github.com/AaravGug">github</a>
       </footer>
     </div>
   );
