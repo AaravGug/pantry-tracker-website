@@ -15,7 +15,7 @@ const Home = () => {
         <Link to="/pantry" className="get-started-button">Get Started</Link>
       </main>
       <footer className="footer">
-        Made by Aarav Guglani <a href="github.com/AaravGug">github</a>
+        Made by Aarav Guglani <a href="github.com/AaravGug">GitHub</a>
       </footer>
     </div>
   );
