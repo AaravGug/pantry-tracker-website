@@ -10,7 +10,7 @@ lookupIngredient_bp = Blueprint('lookupIngredient', __name__)
 def lookup_ingredient():
     query = request.args.get('query')
     if not query:
-        return jsonify({'ingredients': []})
+        return jsonify({'ingredients': []}), 200
     try:
         result = db.session.execute(text('SELECT aliased_ingredient_name FROM ingredients WHERE aliased_ingredient_name ILIKE :query LIMIT 10'), {'query': f'%{query}%'})
         ingredients = [row[0] for row in result]
@@ -19,6 +19,6 @@ def lookup_ingredient():
         coumpound_ingredients = [row[0] for row in result]
 
         all_ingredients = ingredients + coumpound_ingredients
-        return jsonify({'ingredients': all_ingredients})
+        return jsonify({'ingredients': all_ingredients}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500

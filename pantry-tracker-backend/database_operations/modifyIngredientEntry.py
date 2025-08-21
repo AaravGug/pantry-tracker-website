@@ -21,7 +21,7 @@ def modify_ingredient_entry():
         else:
             return jsonify({'error': 'Ingredient not found'}), 404
         
-        return jsonify({'message': 'Ingredient entry modified successfully'})
+        return jsonify({'message': 'Ingredient entry modified successfully'}), 200
         
     except Exception as e:
         return jsonify({'error': str(e)}), 500
