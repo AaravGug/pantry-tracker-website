@@ -19,7 +19,10 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 db.init_app(app)
 
-allowed_origins = os.getenv('ALLOWED_ORIGINS', 'http://localhost:3000').split(',')
+origins = os.getenv("ALLOWED_ORIGINS", "")
+allowed_origins = origins.split(",") if origins else []
+allowed_origins.append("http://localhost:3000")
+
 CORS(app, origins=allowed_origins)
 
 if __name__ == "__main__":
