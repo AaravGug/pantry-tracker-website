@@ -24,7 +24,7 @@ db.init_app(app)
 # allowed_origins.append("http://localhost:3000")
 
 CORS(app, resources={r"/*": {
-    "origins": os.getenv("ALLOWED_ORIGINS", "http://localhost:3000").split(","),
+    "origins": ["http://localhost:3000", "https://pantry-tracker.up.railway.app"],
     "methods": os.getenv("CORS_METHODS", "GET,POST,PUT,DELETE,OPTIONS").split(","),
     "allow_headers": os.getenv("CORS_HEADERS", "Content-Type").split(",")
 }})
