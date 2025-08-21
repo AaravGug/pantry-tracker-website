@@ -19,11 +19,31 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 db.init_app(app)
 
-origins = os.getenv("ALLOWED_ORIGINS", "")
-allowed_origins = origins.split(",") if origins else []
-allowed_origins.append("http://localhost:3000")
+# origins = os.getenv("ALLOWED_ORIGINS", "")
+# allowed_origins = origins.split(",") if origins else []
+# allowed_origins.append("http://localhost:3000")
 
-CORS(app, origins=allowed_origins)
+CORS(app, resources={r"/*": {
+    "origins": os.getenv("ALLOWED_ORIGINS", "http://localhost:3000").split(","),
+    "methods": os.getenv("CORS_METHODS", "GET,POST,PUT,DELETE,OPTIONS").split(","),
+    "allow_headers": os.getenv("CORS_HEADERS", "Content-Type").split(",")
+}})
+# CORS(app, origins=allowed_origins)
+
+app.register_blueprint(lookupIngredient_bp)
+
+app.register_blueprint(getIngredientList_bp)
+
+app.register_blueprint(modifyIngredientEntry_bp)
+
+app.register_blueprint(getGroceryList_bp)
+
+app.register_blueprint(modifyGroceryListEntry_bp)
+
+app.register_blueprint(addListToPantry_bp)
+
+app.register_blueprint(emptyGroceryList_bp)
+
 
 if __name__ == "__main__":
     port = int(os.getenv('PORT', 5000))
@@ -43,17 +63,3 @@ def test_db():
         return jsonify({'ingredient_names': namesString})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    
-app.register_blueprint(lookupIngredient_bp)
-
-app.register_blueprint(getIngredientList_bp)
-
-app.register_blueprint(modifyIngredientEntry_bp)
-
-app.register_blueprint(getGroceryList_bp)
-
-app.register_blueprint(modifyGroceryListEntry_bp)
-
-app.register_blueprint(addListToPantry_bp)
-
-app.register_blueprint(emptyGroceryList_bp)
