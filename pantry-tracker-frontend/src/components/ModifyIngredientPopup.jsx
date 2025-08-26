@@ -13,13 +13,13 @@ const ModifyIngredientPopup = ({ ingredientName, givenUnits, purpose, source, on
     const handleConfirm = async () => {
         if (source === "pantry") {
             ModifyIngredientEntry({ ingredientName, quantity, units });
-            await new Promise(resolve => setTimeout(resolve, 300));
+            await new Promise(resolve => setTimeout(resolve, 1000));
             pantryContext.refreshPantryList();
             console.log('refreshing pantry list')
         }
         else if (source === "grocery list") {
             ModifyGroceryListEntry({ ingredientName, quantity, units });
-            await new Promise(resolve => setTimeout(resolve, 300));
+            await new Promise(resolve => setTimeout(resolve, 1000));
             groceryContext.refreshGroceryList();
             console.log('refreshing grocery list');
         }
