@@ -147,6 +147,18 @@ option {
   z-index: 1000; /* make sure it’s on top */
 }
 
+.popup-window-auth {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .popup-content {
   background: white;
   width: 60%;

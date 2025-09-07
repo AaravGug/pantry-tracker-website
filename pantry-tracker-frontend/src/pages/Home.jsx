@@ -1,7 +1,19 @@
 import '../styles/home.css';
 import { Link } from 'react-router-dom';
+import React, { useState }from 'react';
+import SupabaseAuth from '../utils/SupabaseClient';
+import LoggedInCheck from '../utils/LoggedInCheck';
+
+const clickHandler = () => {
+  // console.log('handling click!');
+  // setShowCheck(true);
+  // {showCheck && <LoggedInCheck />}
+  // <LoggedInCheck />;
+};
 
 const Home = () => {
+  const [showCheck, setShowCheck] = useState(false);
+
   return (
     <div className="home-container">
       <header className="header">
@@ -15,7 +27,7 @@ const Home = () => {
         <Link to="/pantry" className="get-started-button">Get Started</Link>
       </main>
       <footer className="footer">
-        Made by Aarav Guglani <a href="github.com/AaravGug">GitHub</a>
+        Made by Aarav Guglani <a href="https://github.com/AaravGug" target="_blank">GitHub</a>
       </footer>
     </div>
   );
