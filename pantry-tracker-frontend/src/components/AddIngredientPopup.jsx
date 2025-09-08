@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import BuildIngredientListNames from './BuildIngredientListNames';
 import AddIngredientSearchBar from './AddIngredientSearchBar';
 

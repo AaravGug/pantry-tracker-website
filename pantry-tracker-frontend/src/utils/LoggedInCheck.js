@@ -15,9 +15,7 @@ const LoggedInCheck = () => {
     }, [loggedIn, loading, navigate]);
 
     if (loading) {
-        return (
-            <div>Loading...</div>
-        );
+        return;
     };
 
     return null;

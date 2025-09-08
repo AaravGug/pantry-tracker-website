@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import ModifyIngredientEntry from '../utils/ModifyIngredientEntry';
-import ModifyGroceryListEntry from '../utils/ModifyGroceryListEntry';
+import modifyIngredientEntry from '../supabase_db_operations/modifyIngredientEntry';
+import modifyGroceryListEntry from '../supabase_db_operations/modifyGroceryListEntry';
 import { usePantryList } from './PantryListProvider';
 import { useGroceryList } from './GroceryListProvider';
 
@@ -12,14 +12,12 @@ const ModifyIngredientPopup = ({ ingredientName, givenUnits, purpose, source, on
 
     const handleConfirm = async () => {
         if (source === "pantry") {
-            ModifyIngredientEntry({ ingredientName, quantity, units });
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            await modifyIngredientEntry({ ingredientName, quantity, units });
             pantryContext.refreshPantryList();
             console.log('refreshing pantry list')
         }
         else if (source === "grocery list") {
-            ModifyGroceryListEntry({ ingredientName, quantity, units });
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            await modifyGroceryListEntry({ ingredientName, quantity, units });
             groceryContext.refreshGroceryList();
             console.log('refreshing grocery list');
         }
@@ -28,6 +26,26 @@ const ModifyIngredientPopup = ({ ingredientName, givenUnits, purpose, source, on
         }
         onClose();
     }
+
+    // code for backend db operation
+    // const handleConfirm = async () => {
+    //     if (source === "pantry") {
+    //         modifyIngredientEntry({ ingredientName, quantity, units });
+    //         await new Promise(resolve => setTimeout(resolve, 1000));
+    //         pantryContext.refreshPantryList();
+    //         console.log('refreshing pantry list')
+    //     }
+    //     else if (source === "grocery list") {
+    //         modifyGroceryListEntry({ ingredientName, quantity, units });
+    //         await new Promise(resolve => setTimeout(resolve, 1000));
+    //         groceryContext.refreshGroceryList();
+    //         console.log('refreshing grocery list');
+    //     }
+    //     else {
+    //         console.log('source cannot be determined, issue with string equality check');
+    //     }
+    //     onClose();
+    // }
 
     return (
         <div className="popup-window">
