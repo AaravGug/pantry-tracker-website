@@ -5,12 +5,12 @@ const AddListToPantryPopup = ({ onClose }) => {
     const { refreshGroceryList } = useGroceryList();
 
     const confirmButtonHandler = async () => {
-        onClose();
-        const result = await AddListToPantryPopupConfirm();
-        if (result.success) {
-        await new Promise(resolve => setTimeout(resolve, 100));
-        refreshGroceryList();
+        const wasSuccessful = await AddListToPantryPopupConfirm();
+
+        if (wasSuccessful) {
+            refreshGroceryList();
         }
+        onClose();
     }
 
     return (

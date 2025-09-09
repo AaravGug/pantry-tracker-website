@@ -17,9 +17,22 @@ const modifyIngredientEntry = async ({ ingredientName, quantity, units }) => {
             throw ingredientExistsError;
         };
 
+        const { data: unitsQuery, error: unitsQueryError } = await supabaseClient
+            .from('units')
+            .select('id')
+            .ilike('unit_name', units)
+            .single();
+
+        if (unitsQueryError) {
+            throw unitsQueryError;
+        };
+
+        const unit_id = unitsQuery.id;
+
+
+
         // if entry exists, then we need to update it, reuse unit info from table
         if (ingredientExists.length > 0) {
-            const unit_id = ingredientExists.p_unit_id;
             const { error: selectedIngredientError } = await supabaseClient
                 .from('user_ingredients')
                 .update({
@@ -35,17 +48,6 @@ const modifyIngredientEntry = async ({ ingredientName, quantity, units }) => {
         }
         // if entry doesn't exist, we need to make it with all relevant info, so get unit_id from units table
         else {
-            const { data: unitsQuery, error: unitsQueryError } = await supabaseClient
-                .from('units')
-                .select('id')
-                .ilike('unit_name', units)
-                .single();
-
-            const unit_id = unitsQuery.id;
-
-            if (unitsQueryError) {
-                throw unitsQueryError;
-            }
 
             const { error: selectedIngredientError } = await supabaseClient
                 .from('user_ingredients')
