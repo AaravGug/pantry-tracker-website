@@ -18,7 +18,7 @@ const GroceryIngredientList = () => {
             setIngredientList(ingredients);
         }
         else {
-            setIngredientList("Start building your grocery list with the button above!");
+            setIngredientList("Start by adding ingredients!");
         };
     };
 

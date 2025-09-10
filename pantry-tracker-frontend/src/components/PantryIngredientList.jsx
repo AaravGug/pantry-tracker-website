@@ -35,7 +35,7 @@ const PantryIngredientList = () => {
             setIngredientList(ingredients);
         }
         else {
-            setIngredientList("Start adding ingredients using the button above!");
+            setIngredientList("Use the button to start adding ingredients!");
         };
     };
 
